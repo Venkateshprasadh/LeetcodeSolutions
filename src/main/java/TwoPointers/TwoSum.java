@@ -24,7 +24,7 @@ private static int[] sumIndexes(int arr[], int target)
 }
 
     public static void main(String[] args) {
-        int arr[]  = {1,2,3,4,5,11}; int target=15;
+        int arr[]  = {3,2,4}; int target=6;
 
         int[] index = sumIndexes(arr,target);
         for(int i:index)
