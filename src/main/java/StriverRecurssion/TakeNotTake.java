@@ -144,6 +144,28 @@ public class TakeNotTake {
         sum-=subset[ind];
         subsetSum(subset,ind+1,n,output,sum);
     }
+    public static List<List<Integer>> subSetII(int[] subset) {
+        List<Integer> list = new ArrayList<>();
+        List<List<Integer>> output = new ArrayList<>();
+        Arrays.sort(subset);
+        subsetII(0,subset,subset.length,list,output);
+        return output;
+    }
+
+    private static void subsetII(int ind, int[] subset, int length, List<Integer> list, List<List<Integer>> output) {
+        if(ind==length)
+        {
+            output.add(new ArrayList<>(list));
+            return;
+        }
+        list.add(subset[ind]);
+        subsetII(ind+1,subset,length,list,output);
+        list.remove(list.size()-1);
+        while (ind + 1 < subset.length && subset[ind] == subset[ind + 1]) {
+            ind++;
+        }
+        subsetII(ind+1,subset,length,list,output);
+    }
 
     public static void main(String[] args) {
         /*int[] arr = {3,1,2};
@@ -160,7 +182,10 @@ public class TakeNotTake {
         /*int[] candidates = {10,1,2,7,6,1,5}; int target = 8;
         System.out.println(combinationSum2(candidates,target));*/
 
-        int[] subset = {2,3};
-        System.out.println(subSetCallMethod(subset));
+        /*int[] subset = {2,3};
+        System.out.println(subSetCallMethod(subset));*/
+
+        int[] arr = {2,1,2};
+        System.out.println(subSetII(arr));
     }
 }
